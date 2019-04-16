@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const path = require('path')
 const api = require('./server/routes/api')
-const dataDao = require("./dataDao.js")
+const dataDao = require("./server/dataDao.js")
 
 // 2 options - one whenever we upload for the heroku, the other for simply testing connection
 // mongoose.connect(process.env.CONNECTION_STRING || "mongodb://localhost/weatherDB", {useNewUrlParser: true})

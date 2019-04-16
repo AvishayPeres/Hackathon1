@@ -3,6 +3,8 @@ let arrTeams = []
 let arrClosedBets = []
 let arrUsers = []
 
+
+
 /*
 ToDO:
 1. send get request to server using jquery to route '_____' ( will define between us)

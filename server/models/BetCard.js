@@ -3,8 +3,8 @@ const Schema = mongoose.Schema
 
 const BetCardSchema = new Schema({
     user1: String,
-    user2: String,
     team1: String,
+    user2: String,
     team2: String
 })
 

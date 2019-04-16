@@ -1,10 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const request = require('request')
-const helper = require("../../dataDao.js")
-const unirest = require("unirest")
-const dataDao = new helper()
-const ConfigClass = require("../../config")
+const ConfigClass = require("../config")
 
 const configClass = new ConfigClass()
 
