@@ -8,7 +8,7 @@ const dataDao = require("./server/dataDao.js")
 
 // 2 options - one whenever we upload for the heroku, the other for simply testing connection
 // mongoose.connect(process.env.CONNECTION_STRING || "mongodb://localhost/weatherDB", {useNewUrlParser: true})
-mongoose.connect("mongodb://localhost/weatherDB", {useNewUrlParser: true})
+mongoose.connect("mongodb://localhost/soccer-betting", {useNewUrlParser: true})
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -24,5 +24,6 @@ app.listen(process.env.PORT || port, function () {
 
 
 const dataLoader = new dataDao()
-dataLoader.dropAndCleanDB() 
-dataLoader.populateDB_with_dummyData()
+// dataLoader.dropAndCleanDB() 
+
+
