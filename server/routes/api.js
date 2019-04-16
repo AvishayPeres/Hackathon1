@@ -17,5 +17,10 @@ router.get('/sanity', function (req, res) {
 //     }
 // )
 
+router.get('/teams', function( req,res) {
+    console.log("got teams from db..")
+    res.send([{name1: "vova", nam2: "avishii", team1: "chelsea", team2:"liverpool"}])
+})
+
 
 module.exports = router
