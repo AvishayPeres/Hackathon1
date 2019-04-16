@@ -26,9 +26,9 @@ const DataManager = function(){
 
     }
 
-    const deleteFromPendingBetsById = async function(pendingBetId) {
+    // const deleteFromPendingBetsById = async function(pendingBetId) {
 
-    }
+    // }
 
     const getClosedBets = async function(){
 
