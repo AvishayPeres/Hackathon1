@@ -1,0 +1,29 @@
+{
+  "name": "hackathon1",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AvishayPeres/Hackathon1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AvishayPeres/Hackathon1/issues"
+  },
+  "homepage": "https://github.com/AvishayPeres/Hackathon1#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jquery": "^3.4.0",
+    "mongoose": "^5.5.1",
+    "nodemon": "^1.18.11",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
