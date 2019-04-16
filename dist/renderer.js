@@ -1,5 +1,6 @@
 const Renderer = function () {
 
+    
     // -----------------------------
     // Main and only function.
     // -----------------------------
