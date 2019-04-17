@@ -15,6 +15,35 @@ const Renderer = function () {
         const template = Handlebars.compile(source)
         let newHtml = template({ arrOpenBets })
         $(".openBetsMenu").append(newHtml)
+
+        $(".openSingleBet").find(".team-btn").on("click", async function () {
+            const saveTeam1 = $(this).text()
+            const saveTeam2 = $(this).siblings(".team-btn").text()
+            const saveUser1 = $(this).siblings(".user1").text()
+            const saveUser2 = $(".input-secondName").val()           
+            const curCard = { user1: saveUser1, team1: saveTeam1, user2: saveUser2, team2: saveTeam2 }
+
+            console.log(curCard)
+            // ===============================================
+            //1. saving the openCardIn as closed in db.
+            await $.post('/closedBetCard', curCard)
+            // //2. delete this from array of openBetCards.
+            // await $.ajax({
+            //     type: "DELETE",
+            //     url: '/game',
+            //     data: { team1: saveTeam1, team2: saveTeam2 },
+            // });
+
+            // //3. render again the openBetCards.
+            // const arrGames = await $.get('/teams')
+            // renderGames(arrGames)
+
+            //4. render closedBetCards
+            // const arrClosedBets = await $.get('/closedBetCards')
+            // console.log(arrClosedBets)
+            // renderOpenBets(arrOpenBets)
+            // ===============================================
+        })
     }
 
     // -----------------------------
@@ -52,43 +81,28 @@ const Renderer = function () {
         $(".currentGamesContainer").append(newHtml)
 
         $(".currentGamesContainer").find(".team-btn").on("click", async function () {
-            let saveTeam1 = $(this).text()
-            console.log(saveTeam1)
-            let saveTeam2 = $(this).siblings(".team-btn").text()
-            console.log(saveTeam2)
-            let saveUser1 = $("#input-name").val()
-            console.log(saveUser1)
-            let saveUser2 = null
-            console.log(saveUser2)
+            const saveTeam1 = $(this).text()
+            const saveTeam2 = $(this).siblings(".team-btn").text()
+            const saveUser1 = $("#input-name").val()
+            const saveUser2 = null           
+            const tempOpenBetCard = { user1: saveUser1, team1: saveTeam1, user2: saveUser2, team2: saveTeam2 }
 
-            let tempOpenBetCard = { user1: saveUser1, team1: saveTeam1, user2: saveUser2, team2: saveTeam2 }
-            
-            // -------------------------------------
-            // this is way out of archytecture, where to put it ? 
-            // not suppouse to be here... 
-            // -------------------------------------
-
+            // ===============================================
             //1. saving the card in db.
             await $.post('/openbetcards', tempOpenBetCard)
-
-            // //2. delete the game from array of games.
+            //2. delete the game from array of games.
             await $.ajax({
                 type: "DELETE",
                 url: '/game',
                 data: { team1: saveTeam1, team2: saveTeam2 },
             });
-            
-            // //3. render again the games.
+            //3. render again the games.
             const arrGames = await $.get('/teams')
             renderGames(arrGames)
-            
-
-            // renderGames(await $.get('/teams'))
+            //4. render open bets
             const arrOpenBets = await $.get('/openbetcards')
             renderOpenBets(arrOpenBets)
-            
-            
-            
+            // ===============================================
         })
     }
 

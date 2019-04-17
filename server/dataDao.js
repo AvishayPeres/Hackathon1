@@ -1,7 +1,7 @@
 const Game = require("./models/Game")
 const BetCard = require("./models/BetCard")
 const OpenBetCard = require("./models/OpenBetCard")
-
+const ClosedBetCard = require("./models/ClosedBetCard")
 class helper {
     constructor() {
     }
@@ -10,8 +10,8 @@ class helper {
         console.log("collection game is dropped")
     }
     async clearDB(){
-        Game.collection.drop()
-        OpenBetCard.collection.drop()
+        // Game.collection.drop()
+        // OpenBetCard.collection.drop()
         // BetCard.collection.drop()
     }
     async populate(arr){
@@ -29,7 +29,7 @@ class helper {
     async getBetCards(){
         return await BetCard.find({})
     }
-
+    
     async saveBetCard(argCard) {
         let cardToSave = new BetCard({
             user1: argCard.user1,
@@ -51,83 +51,48 @@ class helper {
         })
         
         openBetCardToSave.save()
-        console.log(openBetCardToSave)
         console.log(`openBetCardToSave with id of ${openBetCardToSave._id} was saved`)
     }
+
+    async saveClosedBetCard(argCard){
+        let closedBetCard = new ClosedBetCard({
+            user1: argCard.user1,
+            team1: argCard.team1,
+            user2: argCard.user2,
+            team2: argCard.team2
+        })
+
+        closedBetCard.save()
+        console.log(`closedCard with id of ${closedBetCard._id} was saved...`)
+    }
     async deleteGame(argGame){
-        console.log("in deleting game...")
-        console.log(argGame)
         const gameToDelete = await Game.find({ team1: argGame.team1 , team2: argGame.team2})
         const curID = gameToDelete[0]._id
         console.log(`ID to delete: ${curID}`)
-        // const gameByID = await Game.findById(curID)
-        // console.log(gameByID)
-        const deletedCityMSG = await Game.findByIdAndDelete(curID, function (err) {
-            let message = ""
-            if (!err) {
-                message = `the game with ${curID} was deleted`;
-            }
-            else {
-                message = `error deleting game with id ${curID}`;
-            }
-            return message
-        })
-        return deletedCityMSG
+
+        // const deletedGameMSG = await Game.findByIdAndDelete(curID, function (err) {
+        //     let message = ""
+        //     if (!err) {
+        //         message = `the game with ${curID} was deleted`;
+        //     }
+        //     else {
+        //         message = `error deleting game with id ${curID}`;
+        //     }
+        //     return message
+        // })
+        // return deletedGameMSG
     }
     async getGames() {
         let arr = await Game.find({})
         return arr
     }
     async getOpenBets(){
-        /*
-        let dummyArrOfOpenBets = [
-            {
-                user1: "Vova",
-                user2: null,
-                team1: "Chelsea",
-                team2: "Liverpool"
-            },
-        
-            {
-                user1: "Avishay",
-                user2: null,
-                team1: "Man Utd",
-                team2: "Man City"
-            },
-            {
-                user1: "Vova",
-                user2: null,
-                team1: "Watford",
-                team2: "Tottenham"
-            },
-            {
-                user1: "Vova",
-                user2: null,
-                team1: "Watford",
-                team2: "Tottenham"
-            },
-            {
-                user1: "Vova",
-                user2: null,
-                team1: "Watford",
-                team2: "Tottenham"
-            },
-            {
-                user1: "Vova",
-                user2: null,
-                team1: "Watford",
-                team2: "Tottenham"
-            },
-            {
-                user1: "Vova",
-                user2: null,
-                team1: "Watford",
-                team2: "Tottenham"
-            }
-        ]
-        */
        let arr = await OpenBetCard.find({})
        return arr
+    }
+    async getClosedBets(){
+        let arr = await ClosedBetCard.find({})
+        return arr
     }
 }
 
