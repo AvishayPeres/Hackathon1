@@ -9,7 +9,14 @@ class helper {
         Game.collection.drop()
         console.log("collection game is dropped")
     }
-
+    async clearDB(){
+        Game.collection.drop()
+        OpenBetCard.collection.drop()
+        // BetCard.collection.drop()
+    }
+    async populate(arr){
+        arr.forEach(element => this.saveToDB(element));
+    }
     async saveToDB(argGame) {
         let game = new Game({
             team1: argGame.team1,
@@ -52,7 +59,9 @@ class helper {
         console.log(argGame)
         const gameToDelete = await Game.find({ team1: argGame.team1 , team2: argGame.team2})
         const curID = gameToDelete[0]._id
-        console.log(`ID: ${curID}`)
+        console.log(`ID to delete: ${curID}`)
+        // const gameByID = await Game.findById(curID)
+        // console.log(gameByID)
         const deletedCityMSG = await Game.findByIdAndDelete(curID, function (err) {
             let message = ""
             if (!err) {

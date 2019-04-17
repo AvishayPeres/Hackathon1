@@ -72,17 +72,16 @@ const Renderer = function () {
             await $.post('/openbetcards', tempOpenBetCard)
 
             // //2. delete the game from array of games.
-            // await $.ajax({
-            //     type: "DELETE",
-            //     url: '/game',
-            //     data: { team1: saveTeam1, team2: saveTeam2 },
-            // });
-            
+            await $.ajax({
+                type: "DELETE",
+                url: '/game',
+                data: { team1: saveTeam1, team2: saveTeam2 },
+            });
             
             // //3. render again the games.
             const arrGames = await $.get('/teams')
-            console.log(arrGames)
-            console.log("render the games instead of this console.log, but delete before...")
+            renderGames(arrGames)
+            
 
             // renderGames(await $.get('/teams'))
             const arrOpenBets = await $.get('/openbetcards')
