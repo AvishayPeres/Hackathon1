@@ -26,8 +26,8 @@ class DataManager {
         }
 
     async saveUser() {
-        await $.post(`/users`, this.songData, function (user) {
-            console.log("song sent!")
+        await $.post(`/users`, this., function (user) {
+            console.log("s!")
             })
         }
 
@@ -38,6 +38,8 @@ router.post('/betcards', async function(req,res){
     let betCardToSave = req.body.betCardToSave
     dataDao.saveBetCard(betCardToSave)
  })
+
+ 
  // will return arrOfTeams = [ {team1: 'Chelsea', team2: 'Liverpool},
  //                            {team1: 'Arsenal', team2: 'Watford'} ,..  ]
  router.get('/teams', async function (req, res) {
