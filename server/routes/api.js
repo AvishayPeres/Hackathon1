@@ -77,5 +77,4 @@ router.get('/betcards', async function(req, res){
     return arrBetCards
 })
 
-
 module.exports = router
