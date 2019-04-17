@@ -16,15 +16,14 @@ const Renderer = function () {
         let newHtml = template({ arrOpenBets })
         $(".openBetsMenu").append(newHtml)
 
-        $(".openSingleBet").find(".team-btn").on("click", async function () {
-            const saveTeam1 = $(this).text()
-            const saveTeam2 = $(this).siblings(".team-btn").text()
-            const saveUser1 = $(this).siblings(".user1").text()
+        $(".openSingleBet").find(".button-submit-openBet").on("click", async function () {
+            const saveUser1 = $(this).siblings(".teamChosen1").find(".userSpan").text()
+            const saveTeam1 = $(this).siblings(".teamChosen1").find(".spanTeam1").text()
+            const saveTeam2 = $(this).siblings(".teamChosen2").find(".spanTeam2").text()
             
             const saveUser2 = $(".input-secondName").val()           
             const curCard = { user1: saveUser1, team1: saveTeam1, user2: saveUser2, team2: saveTeam2 }
-
-            console.log(curCard)
+          
             // ===============================================
             //1. saving the openCardIn as closed in db.
             await $.post('/closedBetCard', curCard)
@@ -36,13 +35,12 @@ const Renderer = function () {
             // });
 
             // //3. render again the openBetCards.
-            // const arrGames = await $.get('/teams')
-            // renderGames(arrGames)
+            const arrOpenBets = await $.get('/openbetcards')
+            renderOpenBets(arrOpenBets)
 
-            //4. render closedBetCards
-            // const arrClosedBets = await $.get('/closedBetCards')
-            // console.log(arrClosedBets)
-            // renderOpenBets(arrOpenBets)
+            // 4. render closedBetCards
+            const arrClosedBets = await $.get('/closedBetCards')
+            renderClosedBets(arrClosedBets)
             // ===============================================
         })
     }
@@ -81,26 +79,6 @@ const Renderer = function () {
 
         $(".currentGamesContainer").append(newHtml)
 
-        // $(".currentGamesContainer").find(".submit-bet").on("click", function(){
-        //     let homeTeam = $(this).siblings('input[name="team"]').val()
-
-        //     let saveTeam1 = $(this).siblings('input[name="team"]:checked').val()
-        //     let saveTeam2 = $(this).siblings('input[name="team"]').not(':checked').val()
-
-            
-        //     if ( saveTeam1 != homeTeam){
-        //         saveTeam1 = saveTeam2
-        //         saveTeam2 = homeTeam
-        //     }
-
-            
-        //     // const arrTeams = $('input[name="team"')
-        //     // console.log(arrTeams)
-        //     // console.log("hometeam : " + homeTeam)
-        //     // console.log(saveTeam1)
-        //     // console.log(saveTeam2)
-        // })
-
         $(".currentGamesContainer").find(".submit-bet").on("click", async function () {
             let homeTeam = $(this).siblings('input[name="team"]').val() // getting home team radio button val()
             let saveTeam1 = $(this).siblings('input[name="team"]:checked').val()
@@ -108,7 +86,7 @@ const Renderer = function () {
 
             //checking if the home team is the selected, if not -> change
             if ( saveTeam1 != homeTeam){
-                saveTeam2 =  $(this).siblings('input[name="team"]:checked').val()
+                saveTeam2 = $(this).siblings('input[name="team"]:checked').val()
                 saveTeam1 = $(this).siblings('input[name="team"]').not(':checked').val()
             }
             else{
@@ -116,7 +94,6 @@ const Renderer = function () {
                 saveTeam2 = $(this).siblings('input[name="team"]').not(':checked').val()
             }
             
-
             const saveUser1 = $("#input-name").val()
             const saveUser2 = null         
             
