@@ -12,11 +12,11 @@
     width: 100%;
     height: 600px;
     grid-template-areas: 
-    "a a a o o r r r"
+    /* "a a a o o r r r" */
     "p p p m m scores scores"
     "p p p m m scores scores"
     "p p p m m scores scores"
-    ". . . k k u u"
+    /* ". . . k k u u" */
     "p p p c c winner winner"
     "p p p c c winner winner"
     "p p p c c winner winner";
