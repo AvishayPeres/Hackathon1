@@ -28,23 +28,23 @@ $(".currentGamesContainer").find(".team-btn").on("click", function () {
 })
 
 // --->> pending bets waiting
-// $(".openBetsMenu").find(".team-btn").on("click", function () {
-//     let saveTeam1 = $(this).siblings(".team-btn").attr("disabled", true)()
-//     let saveTeam2 = $(this).text()
-//         console.log(saveTeam2)
-//     let saveUser2 = $("input-secondName").val()
-//         console.log(saveUser2)
+$(".openBetsMenu").find(".team-btn").on("click", function () {
+    // let saveTeam1 = $(this).siblings(".team-btn").attr("disabled", true)()
+    let saveUser2 = $("input-secondName").val()
+        console.log(saveUser2)
+    let saveTeam2 = $(this).text()
+        console.log(saveTeam2)
  
-//     let saveBetCard = { user1: saveUser1, team1: saveTeam1, user2: saveUser2, team2: saveTeam2 }
-//     $.post('/betCard', saveBetCard, function (response) {
-//         console.log(saveBetCard)
-//     })
-// })
-
-
-
-
-router.get('/teams', async function (req, res) {
-    const teams = await getPopulatedGames()
-    res.send(teams)
+    let saveBetCard = { user1: saveUser1, team1: saveTeam1, user2: saveUser2, team2: saveTeam2 }
+    $.post('/betcards', saveBetCard, function (response) {
+        console.log(saveBetCard)
+    })
 })
+
+
+
+
+// router.get('/teams', async function (req, res) {
+//     const teams = await getPopulatedGames()
+//     res.send(teams)
+// })
