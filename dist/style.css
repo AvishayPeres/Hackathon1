@@ -46,19 +46,22 @@
     margin: 20px;
 }
 .singleGame{
-    
     grid-area: g;
     display:grid;
     grid-template-areas: 
-    "team1 vs team2 s";
+    "team1 vs team2";
     border: 2px solid grey;
     border-radius: 10px;
     padding:10px;
     margin: 5px
 }
+.team-btn{
+    border: 2px solid grey;
+    border-radius: 10px;
+}
 #submit-btn{
     grid-area: s;
-    border: 2px solid grey;
+    border: 2px solid;
     border-radius: 10px;
 }
 .vs{
