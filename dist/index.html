@@ -51,12 +51,12 @@
     <script id="render-games-script" type="text/x-handlebars-template">
             {{#each arrGames}}
             <div class="singleGame">
-                    <input type="radio" class="radio-button" name="team" value={{team1}}> {{team1}} 
+                    <input type="radio" class="radio-button" name="team" value={{team1}} checked="checked"> {{team1}} 
                     <input type="radio" class="radio-button" name="team" value={{team2}}> {{team2}} 
                     <button class="submit-bet">Submit bet</button>
                 </div>
             {{/each}}
-    </script> -->
+    </script>
     <!-- ----------------------------------------------- -->
     <script id="openBetsMenu-script" type="text/x-handlebars-template">
         {{#each arrOpenBets}}
