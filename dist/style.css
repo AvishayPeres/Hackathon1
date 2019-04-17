@@ -64,6 +64,7 @@
     margin: 20px;
     border: 2px solid grey;
     border-radius: 10px;
+    padding: 5px;
 }
 
 .input-div{
@@ -72,10 +73,12 @@
 }
 .currentGamesContainer{
     grid-area: l;
-    display:gird;
+    /* display:grid; */
+    position: relative;
     grid-template-areas: 
     "g";
     margin: 20px;
+    border-radius: 10px;
 }
 .singleGame{
     grid-area: g;
@@ -90,6 +93,9 @@
 .team-btn{
     border: 2px solid grey;
     border-radius: 10px;
+    height: 35x;
+    width: 140px;
+    position: sticky;
 }
 #submit-btn{
     grid-area: s;
@@ -121,17 +127,18 @@
 .vs{
     text-align: center;
     grid-area: vs;
-    margin:5px;
+    position: relative;
 }
 .team1{
     text-align: center;
     grid-area: team1;
-    margin:5px;
+  
 }
 .team2{
     text-align: center;
     grid-area: team2;
-    margin:5px;
+    float: right;
+ 
 }
 #input-name{
     width: 240px;
@@ -146,10 +153,12 @@
 }
 
 .openBetsMenu{
+    position: sticky;
     grid-area: m;
     background-color: var(--second-color);
     overflow-y: scroll;
-    height:90%;
+    height:320px;
+    width: 350px;
     border: 2px solid grey;
     border-radius: 10px;
     margin: 20px;
@@ -157,12 +166,14 @@
 
 .closedBetsMenu{
     grid-area: c;
+    position: sticky;
     background-color: var(--third-color);
     overflow-y: scroll;
     border: 2px solid grey;
     border-radius: 10px;
     margin: 20px;
-    height:90%; 
+    height:320px;
+    width: 250px;
 }
 /* 
 ::-webkit-scrollbar {
