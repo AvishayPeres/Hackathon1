@@ -1,8 +1,8 @@
 :root{
     
-    --first-color: #77c9d4;
-    --second-color: #57BC90;
-    --third-color: #015249;
+    --first-color: #3700b3;
+    --second-color: #6200ee;
+    --third-color: #BB86FC;
     --fourth-color: #A5A5Af;
 }
 
@@ -55,9 +55,19 @@ html {
     text-align: center;
     grid-area: team_score2;
 }
+
+.scoresTable::before {
+    content: "Latest Scores:";
+    background-color: var(--third-color);
+    grid-column: 1;
+    grid-row: 1;
+    color: white;
+    font-family: verdana;
+    text-shadow: 1.5px 1.5px navy;
+}
 .scoresTable{
     grid-area: scores;
-    background-color: var(--first-color);
+    background-color: var(--third-color);
     margin: 20px;
     display:grid;
     border: 2px solid grey;
@@ -65,17 +75,39 @@ html {
     height:320px;
     width: 210px;
     overflow-y: scroll;
+}
 
+.winnerTable::before {
+    content: "Best Bettor:";
+    text-align: center;
+    background-color:var(--third-color);
+    grid-column: 2;
+    grid-row: 1;
+    color: white;
+    font-family: verdana;
+    text-shadow: 1.5px 1.5px navy;
+    
 }
 .winnerTable{
     grid-area: winner;
-    background-color: var(--first-color);
+    background-color: var(--third-color);
     margin: 20px;
     border: 2px solid grey;
     border-radius: 10px;
     height:320px;
     width: 210px;
     overflow-y: scroll;
+}
+
+.placeBet::before {
+    content: "Pick a Team:";
+    text-align: center;
+    background-color: var(--first-color);
+    grid-column: 1;
+    grid-row: 1;
+    color: white;
+    font-family: verdana;
+    text-shadow: 1.5px 1.5px navy;
 
 }
 .placeBet{
@@ -92,6 +124,7 @@ html {
     border: 2px solid grey;
     border-radius: 10px;
     padding: 5px;
+    overflow-y: scroll;
 }
 
 .input-div{
@@ -191,7 +224,16 @@ html {
 .openedSingleBet{
     background-color: var(--first-color);
 }
-
+.openBetsMenu::before {
+    content: "Open Floor:";
+    text-align: right;
+    background-color: var(--second-color);
+    grid-column: 2;
+    grid-row: 1;
+    color: white;
+    font-family: verdana;
+    text-shadow: 1.5px 1.5px navy;
+}
 .openBetsMenu{
     position: sticky;
     grid-area: m;
@@ -203,11 +245,20 @@ html {
     border-radius: 10px;
     margin: 20px;
 }
-
+.closedBetsMenu::before {
+    content: "Closed Bets:";
+    text-align: center;
+    background-color: var(--second-color);
+    grid-column: 2;
+    grid-row: 1;
+    color: white;
+    font-family: verdana;
+    text-shadow: 1.5px 1.5px navy;
+}
 .closedBetsMenu{
     grid-area: c;
     position: sticky;
-    background-color: var(--third-color);
+    background-color: var(--second-color);
     overflow-y: scroll;
     border: 2px solid grey;
     border-radius: 10px;
