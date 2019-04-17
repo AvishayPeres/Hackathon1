@@ -24,6 +24,6 @@ app.listen(process.env.PORT || port, function () {
 
 
 const dataLoader = new dataDao()
-// dataLoader.dropAndCleanDB() 
+
 
 
