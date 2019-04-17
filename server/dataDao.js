@@ -15,9 +15,11 @@ class helper {
         game.save()
         console.log(`game with ${game.team1} vs ${game.team2} was saved.`)
     }
+    
     async getBetCards(){
         return await BetCard.find({})
     }
+
     async saveBetCard(argCard) {
         let cardToSave = new BetCard({
             user1: argCard.user1,
