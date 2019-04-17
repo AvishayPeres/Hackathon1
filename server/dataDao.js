@@ -40,6 +40,7 @@ class helper {
             user2: argCard.user2,
             team2: argCard.team2
         })
+        
         openBetCardToSave.save()
         console.log(cardToSave)
         console.log(`openBetCardToSave with id of ${openBetCardToSave._id} was saved`)
