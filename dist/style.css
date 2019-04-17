@@ -129,6 +129,12 @@ html {
     border: 2px solid;
     border-radius: 10px;
 }
+.singleClosedBet{
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid var(--second-color);
+    border-radius: 10px;
+}
 .openSingleBet{
     display:grid;
     grid-template-areas: 

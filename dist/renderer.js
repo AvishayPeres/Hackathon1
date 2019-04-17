@@ -118,12 +118,15 @@ const Renderer = function () {
             // ===============================================
         })
     }
-
+    const renderUsers = function (arrUsers) {
+        
+    }
     return {
         render: render,
         renderGames: renderGames,
         renderClosedBets: renderClosedBets,
         renderScoreTables: renderScoreTables,
-        renderOpenBets: renderOpenBets
+        renderOpenBets: renderOpenBets,
+        renderUsers: renderUsers
     }
 }

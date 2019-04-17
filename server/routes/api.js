@@ -10,8 +10,24 @@ router.get('/sanity', function (req, res) {
     console.log("in api.js, router.get")
     res.send("OK!")
 })
-
-
+// -----------------------------------------
+// Helping function.
+// cuz we dont have user collection, we have to retrieve it from closedBetCards that we have in db.
+// -----------------------------------------
+const retrieveUsersFromClosedBetCards = function (argArrClosedBetCards) {
+    let arrOnlyNames = []
+    argArrClosedBetCards.forEach(element => {
+        const curUser1 = element.user1
+        const curUser2 = element.user2
+        // push user1 if he doenst exist in the array... 
+        if (arrOnlyNames.indexOf(curUser1) === -1)
+            arrOnlyNames.push(curUser1)
+        // same with user2
+        if (arrOnlyNames.indexOf(curUser2) === -1)
+            arrOnlyNames.push(curUser2)
+    });
+    return arrOnlyNames
+}
 
 // const arrMainTeams = ["Chelsea", "Arsenal", "Liverpool", "Everton", "Fulham", "Watford"]
 const arrMainTeams = ["Chelsea", "Arsenal", "Liverpool", "Everton"]
@@ -67,15 +83,15 @@ const getPopulatedGames = async function () {
 // will return arrOfTeams = [ {team1: 'Chelsea', team2: 'Liverpool}, 
 //                            {team1: 'Arsenal', team2: 'Watford'} ,..  ]
 const dummyArrOfTeams = [
-    {team1: 'Chelsea', team2: 'Liverpool'},
-    {team1: 'Watford', team2: 'Juventus'},
-    {team1: 'Man_Utd', team2: 'Man_City'},
-    {team1: 'Real_Madrid', team2: 'Tottenham'},
-    {team1: 'Inter', team2: 'Atalanta'},
-    {team1: 'Milan', team2: 'LA_Galaxy'}
+    { team1: 'Chelsea', team2: 'Liverpool' },
+    { team1: 'Watford', team2: 'Juventus' },
+    { team1: 'Man_Utd', team2: 'Man_City' },
+    { team1: 'Real_Madrid', team2: 'Tottenham' },
+    { team1: 'Inter', team2: 'Atalanta' },
+    { team1: 'Milan', team2: 'LA_Galaxy' }
 ]
 
-router.get('/resetdb', function (req,res){
+router.get('/resetdb', function (req, res) {
     dataDao.clearDB()
     dataDao.populate(dummyArrOfTeams)
 })
@@ -110,21 +126,36 @@ router.get('/openbetcards', async function (req, res) {
     res.send(arrOpenCards)
 })
 
-router.delete('/game', async function(req,res){
+router.delete('/game', async function (req, res) {
     let gameToDelete = req.body
     const deletingMSG = await dataDao.deleteGame(gameToDelete)
     res.send(deletingMSG)
 })
 
 
-router.post('/closedBetCard', async function(req,res){
+router.post('/closedBetCard', async function (req, res) {
     let cardToClose = req.body
     dataDao.saveClosedBetCard(cardToClose)
-    res.send() 
+    res.send()
+})
+router.get('/matchresults', async function (req,res){
+    const arrResults = await dataDao.getMatchResults()
+    res.send(arrResults)
 })
 
-router.get('/closedBetCards', async function(req,res){
+router.get('/closedBetCards', async function (req, res) {
     const arrClosedBetCards = await dataDao.getClosedBets()
     res.send(arrClosedBetCards)
+})
+
+router.get('/userwintable', async function(req,res){
+// we would do this if we had users in DB.
+    // but... we dont... so we have to create them from the closedBetCards. 
+    // const arrUsersToSend = await dataDao.getUsers()
+    const arrClosedBetCards = await dataDao.getClosedBets()
+    const arrUsersFromClosedBetCards = retrieveUsersFromClosedBetCards(arrClosedBetCards)
+    const arrMatchResults = await dataDao.getMatchResults()
+    const arrUsersWithAmoutOfWins = calculateUsersWins(arrUsersFromClosedBetCards, arrUsersFromClosedBetCards, arrMatchResults)
+    // res.send(arrUsersToSend)
 })
 module.exports = router
