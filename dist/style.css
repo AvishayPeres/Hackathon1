@@ -64,6 +64,23 @@
     border: 2px solid;
     border-radius: 10px;
 }
+.openSingleBet{
+    display:grid;
+    grid-template-areas: 
+    "team1 vs team2"
+    "input-secondName input-secondName input-secondName";
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid var(--third-color);
+    border-radius: 10px;
+}
+.input-secondName{
+    margin: 5px;
+    padding: 5px;
+    border: 2px;
+    border-radius: 10px;
+    grid-area: input-secondName;
+}
 .vs{
     text-align: center;
     grid-area: vs;
@@ -94,6 +111,8 @@
 .openBetsMenu{
     grid-area: m;
     background-color: var(--second-color);
+    overflow-y: scroll;
+    height:90%;
     border: 2px solid grey;
     border-radius: 10px;
     margin: 20px;
@@ -102,7 +121,26 @@
 .closedBetsMenu{
     grid-area: c;
     background-color: var(--third-color);
+    overflow-y: scroll;
     border: 2px solid grey;
     border-radius: 10px;
     margin: 20px;
+    height:90%; 
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+    }
+    ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+    background:var(--first-color); 
+    border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+    background:rgb(54, 56, 58);
 }

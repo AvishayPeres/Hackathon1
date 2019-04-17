@@ -35,4 +35,5 @@ class helper {
         return arr
     }
 }
+
 module.exports = helper
