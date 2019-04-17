@@ -11,14 +11,46 @@
     width: 100%;
     height: 600px;
     grid-template-areas: 
-    "p p p m m"
-    "p p p m m"
-    "p p p m m"
-    "p p p c c"
-    "p p p c c"
-    "p p p c c";
+    "p p p m m scores scores"
+    "p p p m m scores scores"
+    "p p p m m scores scores"
+    "p p p c c winner winner"
+    "p p p c c winner winner"
+    "p p p c c winner winner";
 }
+.singleScore{
+    border: 2px solid grey;
+    border-radius: 10px;
+    display:grid;
+    grid-template-areas: "team_score1 score team_score2";
+}
+.scoreSeparator{
+    grid-area: score;
 
+}
+.team-score1-class{
+    text-align: center;
+    grid-area: team_score;
+}
+.team-score2-class{
+    text-align: center;
+    grid-area: team_score;
+}
+.scoresTable{
+    grid-area: scores;
+    background-color: var(--first-color);
+    margin: 20px;
+    display:grid;
+    border: 2px solid grey;
+    border-radius: 10px;
+}
+.winnerTable{
+    grid-area: winner;
+    background-color: var(--first-color);
+    margin: 20px;
+    border: 2px solid grey;
+    border-radius: 10px;
+}
 .placeBet{
     grid-area: p;
     grid-template-areas: 
