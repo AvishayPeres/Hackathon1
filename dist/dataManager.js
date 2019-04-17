@@ -49,74 +49,58 @@ class DataManager {
 // }
 
 
-
-async saveBetCard(argCard) {
-    let cardToSave = new BetCard({
-        user1: argCard.user1,
-        team1: argCard.team1,
-        user2: argCard.user2,
-        team2: argCard.team2
-    })
-    cardToSave.save()
-
-    // renderer.renderData(podManager.searchPodcast)
-
     // provide param with name: 'betCardToSave'
     // save it to db.
     // no answer!
-    router.post('/betcards', async function (req, res) {
-        let betCardToSave = req.body.betCardToSave
-        dataDao.saveBetCard(betCardToSave)
-    })
+    // router.post('/betcards', async function (req, res) {
+    //     let betCardToSave = req.body.betCardToSave
+    //     dataDao.saveBetCard(betCardToSave)
+    // })
 
 
-    // will return arrOfTeams = [ {team1: 'Chelsea', team2: 'Liverpool},
-    //                            {team1: 'Arsenal', team2: 'Watford'} ,..  ]
-    router.get('/teams', async function (req, res) {
-        const teams = await getPopulatedGames()
-        res.send(teams)
-    })
+    // // will return arrOfTeams = [ {team1: 'Chelsea', team2: 'Liverpool},
+    // //                            {team1: 'Arsenal', team2: 'Watford'} ,..  ]
+  
 
 
-
-    /*
-    ToDO:
-    1. send get request to server using jquery to route '_____' ( will define between us)
-        get the list of matches to render.
+    // /*
+    // ToDO:
+    // 1. send get request to server using jquery to route '_____' ( will define between us)
+    //     get the list of matches to render.
     
-    2. send
-    */
+    // 2. send
+    // */
 
-    const getPendingBets = function () {
-        let
+    // const getPendingBets = function () {
+    //     let
 
-        return arrPendingBets
-    }
+    //     return arrPendingBets
+    // }
 
-    const getPendingBetById = async function (pendingBetId) {
-
-    }
-
-    // const deleteFromPendingBetsById = async function(pendingBetId) {
+    // const getPendingBetById = async function (pendingBetId) {
 
     // }
 
-    const getClosedBets = async function () {
+    // // const deleteFromPendingBetsById = async function(pendingBetId) {
 
-    }
-    const addToClosedBets = async function (id) {
+    // // }
 
-    }
+    // const getClosedBets = async function () {
 
-    const clearPendingBets = async function () {
+    // }
+    // const addToClosedBets = async function (id) {
 
-    }
+    // }
 
-    const clearClosedBets = async function () {
+    // const clearPendingBets = async function () {
 
-    }
+    // }
 
-    return {
-        getPendingPosts: getPendingPosts,
-        getListOfMatches: getListOfMatches
-    }
+    // const clearClosedBets = async function () {
+
+    // }
+
+    // return {
+    //     getPendingPosts: getPendingPosts,
+    //     getListOfMatches: getListOfMatches
+    // }
