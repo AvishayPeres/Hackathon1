@@ -72,6 +72,8 @@ const dummyArrOfTeams = [
     {team1: 'Inter', team2: 'Atalanta'},
     {team1: 'Milan', team2: 'LA Galaxy'}
 ]
+
+
 // ToDo: return real data.
 
 router.get('/teams', async function (req, res) {
@@ -82,17 +84,30 @@ router.get('/teams', async function (req, res) {
 router.post('/betcards', async function (req, res) {
     let betCardToSave = req.body
     dataDao.saveBetCard(betCardToSave)
+    res.send()
 })
 
 // will return array of betcards.
 router.get('/betcards', async function (req, res) {
     const arrBetCards = await dataDao.getBetCards()
-    return arrBetCards
+    res.send(arrBetCards)
+})
+
+router.post('/openbetcards', async function (req, res) {
+    let openBetCardToSave = req.body
+    dataDao.saveOpenBetCards(openBetCardToSave)
+    res.send()
 })
 
 router.get('/openbetcards', async function (req, res) {
-    let openBetCardToSave = req.body
-    dataDao.saveOpenBetCards(openBetCardToSave)
+    const arrOpenCards = await dataDao.getOpenBets()
+    res.send(arrOpenCards)
 })
 
+router.delete('/game', async function(req,res){
+    let gameToDelete = req.body
+    // console.log(gameToDelete)
+    const deletingMSG = await dataDao.deleteGame(gameToDelete)
+    res.send(deletingMSG)
+})
 module.exports = router
