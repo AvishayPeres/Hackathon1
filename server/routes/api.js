@@ -116,4 +116,15 @@ router.delete('/game', async function(req,res){
     res.send(deletingMSG)
 })
 
+
+router.post('/closedBetCard', async function(req,res){
+    let cardToClose = req.body
+    dataDao.saveClosedBetCard(cardToClose)
+    res.send() 
+})
+
+router.get('/closedBetCards', async function(req,res){
+    const arrClosedBetCards = await dataDao.getClosedBets()
+    res.send(arrClosedBetCards)
+})
 module.exports = router
