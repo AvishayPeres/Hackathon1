@@ -20,9 +20,9 @@ $("#render-openBets").on("click", async function(){
 })
 
 $("#render-users").on("click", async function(){
-    const arrUsers = await $.get('/users')
+    const arrUsers = await $.get('/userwintable')
      
-    // renderer.renderUsers(arrUsers)
+    renderer.renderUsers(arrUsers)
 })
 
 $("#generateScores").on("click", async function(){
