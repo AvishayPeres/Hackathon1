@@ -30,7 +30,11 @@ class DataManager {
     }
 
 
-   
+    async saveOpenBetCard(saveBetCard){
+        $.post('/openbetcards', saveBetCard, function (response) {
+            console.log(saveBetCard)
+        })
+    }
 
 
 //     async saveBetCard() {

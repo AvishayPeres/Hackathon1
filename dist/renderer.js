@@ -39,8 +39,19 @@ const Renderer = function () {
         $(".scoresTable").append(newHtml)
     }
 
+    // -----------------------------
+    // rending the games eamstable menu.
+    // -----------------------------
+    const renderGames = function (arrGames) {
+        const source = $("#render-games-script").html()
+        const template = Handlebars.compile(source)
+        let newHtml = template({arrGames})
+        $(".currentGamesContainer").append(newHtml)
+    }
+
     return {
         render: render,
+        renderGames: renderGames,
         renderClosedBets: renderClosedBets,
         renderScoreTables: renderScoreTables,
         renderOpenBets: renderOpenBets

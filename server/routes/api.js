@@ -64,20 +64,21 @@ const getPopulatedGames = async function () {
 }
 // will return arrOfTeams = [ {team1: 'Chelsea', team2: 'Liverpool}, 
 //                            {team1: 'Arsenal', team2: 'Watford'} ,..  ]
+const dummyArrOfTeams = [
+    {team1: 'Chelsea', team2: 'Liverpool'},
+    {team1: 'Watford', team2: 'Juventus'},
+    {team1: 'Man Utd', team2: 'Man City'},
+    {team1: 'Real Madrid', team2: 'Tottenham'},
+    {team1: 'Inter', team2: 'Atalanta'},
+    {team1: 'Milan', team2: 'LA Galaxy'}
+]
+// ToDo: return real data.
+
 router.get('/teams', async function (req, res) {
-    const teams = await getPopulatedGames()
-    res.send(teams)
+    // const teams = await getPopulatedGames()
+    res.send(dummyArrOfTeams)
 })
 
-// provide me a param with name: 'betCardToSave' that will look like this
-// betCardToSave = {
-//      user1: 'someName',
-//      user2: 'null',
-//      team1: 't1',
-//      team2: 't2'
-// }
-// save it to db. 
-// no answer!
 router.post('/betcards', async function (req, res) {
     let betCardToSave = req.body
     dataDao.saveBetCard(betCardToSave)
