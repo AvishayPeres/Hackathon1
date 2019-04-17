@@ -34,8 +34,13 @@ const arrScores = [
     {team1: "Barcelona", team2: "Man Utd", team1_score:"3", team2_score:"0"},
     {team1: "Milan", team2: "Hapoel TelAviv", team1_score:"0", team2_score:"0"},
 ]
+$("#render-games").on("click", async function(){
+    const arrGames = await $.get('/teams')
+    renderer.renderGames(arrGames)
+})
 
-$("#render-openBets").on("click", function(){
+$("#render-openBets").on("click", async function(){
+    const arrOpenBets = await $.get('/teams')
     renderer.renderOpenBets(arrOpenBets)
 })
 

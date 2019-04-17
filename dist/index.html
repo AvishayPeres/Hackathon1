@@ -11,6 +11,7 @@
 
 <body>
     <h1>Vova & Avishii</h1>
+    <button id="render-games">Render games</button>
     <button id="render-openBets">Render Open bets</button>
     <button id="generateScores"> Generate Scores</button>
     <button id="render-users"> Render Users</button>
@@ -20,17 +21,7 @@
                 <input id="input-name" type="text" placeholder="Input your name, mortal...">
             </div>
             <div class="currentGamesContainer">
-                <div class="singleGame">
-                    <button class="team1 team-btn">Chelsea</button>
-                    <div class="vs">X</div>
-                    <button class="team2 team-btn">Liverpool</button>
-                </div>
-                <div class="singleGame">
-                    <h3>this is a second div..</h3>
-                </div>
-                <div class="singleGame">
-                    <h3>this is a third.. all 3 should be in handlebars generated.</h3>
-                </div>
+
             </div>
         </div>
         <div class="openBetsMenu"></div>
@@ -38,7 +29,18 @@
         <div class="scoresTable"></div>
         <div class="winnerTable"></div>
     </div>
-   
+
+
+    <!-- ----------------------------------------------- -->
+    <script id="render-games-script" type="text/x-handlebars-template">
+            {{#each arrGames}}
+            <div class="singleGame">
+                    <button class="team1 team-btn">{{team1}}</button>
+                    <div class="vs">X</div>
+                    <button class="team2 team-btn">{{team2}}</button>
+                </div>
+            {{/each}}
+        </script>
     <!-- ----------------------------------------------- -->
     <script id="openBetsMenu-script" type="text/x-handlebars-template">
         {{#each arrOpenBets}}
