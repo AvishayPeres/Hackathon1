@@ -6,6 +6,7 @@
     --fourth-color: #A5A5Af;
 }
 
+
 .container{
     display:grid;
     width: 100%;
@@ -22,19 +23,20 @@
     border: 2px solid grey;
     border-radius: 10px;
     display:grid;
-    grid-template-areas: "team_score1 score team_score2";
+    grid-template-areas: "team_score1 score_separator team_score2";
 }
 .scoreSeparator{
-    grid-area: score;
+    grid-area: score_separator;
+    text-align: center;
 
 }
 .team-score1-class{
     text-align: center;
-    grid-area: team_score;
+    grid-area: team_score1;
 }
 .team-score2-class{
     text-align: center;
-    grid-area: team_score;
+    grid-area: team_score2;
 }
 .scoresTable{
     grid-area: scores;
@@ -173,7 +175,11 @@
     border-radius: 10px;
     margin: 20px;
     height:320px;
-    width: 250px;
+    width: 350px;
+}
+
+#comslider_in_point_1814208{
+    z-index: 0  ;
 }
 /* 
 ::-webkit-scrollbar {
