@@ -1,7 +1,7 @@
 
 // asd
 
-const arrClosedBets = [
+const arrOpenBets = [
     {
         user1: "Vova",
         user2: null,
@@ -36,7 +36,7 @@ const arrScores = [
 ]
 
 $("#render-openBets").on("click", function(){
-    renderer.renderClosedBets(arrClosedBets)
+    renderer.renderOpenBets(arrOpenBets)
 })
 
 $("#render-users").on("click", function(){

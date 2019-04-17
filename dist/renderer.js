@@ -1,10 +1,10 @@
 const Renderer = function () {
 
-    
+
     // -----------------------------
     // Main and only function.
     // -----------------------------
-    const render = function (arrOfSomething) {   
+    const render = function (arrOfSomething) {
         console.log("in renderer.js, render()")
         console.log("done rendering...")
     }
@@ -12,26 +12,37 @@ const Renderer = function () {
     // -----------------------------
     // rending the OpenBet menu.
     // -----------------------------
-    const renderClosedBets = function (arrClosedBets){
+    const renderOpenBets = function (arrOpenBets) {
+        const source = $("#openBetsMenu-script").html()
+        const template = Handlebars.compile(source)
+        let newHtml = template({ arrOpenBets })
+        $(".openBetsMenu").append(newHtml)
+    }
+
+    // -----------------------------
+    // rending the closedbets menu.
+    // -----------------------------
+    const renderClosedBets = function (arrClosedBets) {
         const source = $("#closedBetsMenu-script").html()
         const template = Handlebars.compile(source)
-        let newHtml = template({arrClosedBets})
+        let newHtml = template({ arrClosedBets })
         $(".closedBetsMenu").append(newHtml)
     }
 
     // -----------------------------
     // rending the scores table menu.
     // -----------------------------
-    const renderScoreTables = function (arrScores){
+    const renderScoreTables = function (arrScores) {
         const source = $("#render-scores-script").html()
         const template = Handlebars.compile(source)
-        let newHtml = template({arrScores})
+        let newHtml = template({ arrScores })
         $(".scoresTable").append(newHtml)
     }
-    
+
     return {
         render: render,
         renderClosedBets: renderClosedBets,
-        renderScoreTables: renderScoreTables
+        renderScoreTables: renderScoreTables,
+        renderOpenBets: renderOpenBets
     }
 }

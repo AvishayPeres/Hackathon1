@@ -99,12 +99,17 @@
 .openSingleBet{
     display:grid;
     grid-template-areas: 
+    "user user user"
     "team1 vs team2"
     "input-secondName input-secondName input-secondName";
     margin: 5px;
     padding: 5px;
     border: 2px solid var(--third-color);
     border-radius: 10px;
+}
+.user1{
+    grid-area: user;
+    text-align: center;
 }
 .input-secondName{
     margin: 5px;

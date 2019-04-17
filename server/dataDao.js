@@ -1,4 +1,5 @@
 const Game = require("./models/Game")
+const BetCard = require("./models/BetCard")
 class helper {
     constructor() {
     }
@@ -28,6 +29,7 @@ class helper {
             team2: argCard.team2
         })
         cardToSave.save()
+        console.log(cardToSave)
         console.log(`card with id of ${cardToSave._id} was saved`)
     }
     async getGames() {

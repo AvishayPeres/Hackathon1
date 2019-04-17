@@ -34,19 +34,24 @@
                 </div>
             </div>
         </div>
-        <div class="openBetsMenu">
-            <div class="openSingleBet">
-                <button class="team1 team-btn">Chelsea</button>
-                <div class="vs">X</div>
-                <button class="team2 team-btn">Liverpool</button>
-                <input type="text" class="input-secondName" placeholder="Input your name here...">
-            </div>
-        </div>
+        <div class="openBetsMenu"></div>
         <div class="closedBetsMenu"></div>
         <div class="scoresTable"></div>
         <div class="winnerTable"></div>
     </div>
-
+   
+    <!-- ----------------------------------------------- -->
+    <script id="openBetsMenu-script" type="text/x-handlebars-template">
+        {{#each arrOpenBets}}
+        <div class="openSingleBet">
+                <div class="user1">{{user1}}</div>
+                <button class="team1 team-btn">{{team1}}</button>
+                <div class="vs">X</div>
+                <button class="team2 team-btn">{{team2}}</button>
+                <input type="text" class="input-secondName" placeholder="Input your name here...">
+            </div>
+        {{/each}}
+    </script>
     <!-- ----------------------------------------------- -->
     <script id="closedBetsMenu-script" type="text/x-handlebars-template">
         {{#each arrClosedBets}}

@@ -79,7 +79,7 @@ router.get('/teams', async function (req, res) {
 // save it to db. 
 // no answer!
 router.post('/betcards', async function (req, res) {
-    let betCardToSave = req.body.betCardToSave
+    let betCardToSave = req.body
     dataDao.saveBetCard(betCardToSave)
 })
 
