@@ -8,6 +8,6 @@ const OpenBetCardSchema = new Schema({
     team2: String
 })
 
-const OpenBetCard = mongoose.model("BetCard", OpenBetCardSchema)
+const OpenBetCard = mongoose.model("OpenBetCard", OpenBetCardSchema)
 
 module.exports = OpenBetCard

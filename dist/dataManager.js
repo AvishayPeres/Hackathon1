@@ -35,7 +35,7 @@ class DataManager {
             console.log(saveBetCard)
         })
     }
-
+}
 
 //     async saveBetCard() {
 //         $(".body").on("click", async function () {

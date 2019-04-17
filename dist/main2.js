@@ -1,51 +1,7 @@
 
 // asd
 
-const arrOpenBets = [
-    {
-        user1: "Vova",
-        user2: null,
-        team1: "Chelsea",
-        team2: "Liverpool"
-    },
 
-    {
-        user1: "Avishay",
-        user2: null,
-        team1: "Man Utd",
-        team2: "Man City"
-    },
-    {
-        user1: "Vova",
-        user2: null,
-        team1: "Watford",
-        team2: "Tottenham"
-    },
-    {
-        user1: "Vova",
-        user2: null,
-        team1: "Watford",
-        team2: "Tottenham"
-    },
-    {
-        user1: "Vova",
-        user2: null,
-        team1: "Watford",
-        team2: "Tottenham"
-    },
-    {
-        user1: "Vova",
-        user2: null,
-        team1: "Watford",
-        team2: "Tottenham"
-    },
-    {
-        user1: "Vova",
-        user2: null,
-        team1: "Watford",
-        team2: "Tottenham"
-    }
-]
 const arrUsers = [
     {name: "user1", timesWon: "2"},
     {name: "user2", timesWon: "5"},
@@ -64,7 +20,7 @@ $("#render-games").on("click", async function(){
 })
 
 $("#render-openBets").on("click", async function(){
-    const arrOpenBets = await $.get('/teams')
+    const arrOpenBets = await $.get('/openbetcards')
     renderer.renderOpenBets(arrOpenBets)
 })
 

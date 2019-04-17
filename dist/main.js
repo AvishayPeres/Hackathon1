@@ -11,21 +11,19 @@ const loadPage = async function () {
 }
 loadPage()
 
-$(".currentGamesContainer").find(".team-btn").on("click", function () {
-    let saveTeam1 = $(this).text()
-        console.log(saveTeam1)
-    let saveTeam2 = $(this).siblings(".team-btn").text()
-        console.log(saveTeam2)
-    let saveUser1 = $("#input-name").val()
-        console.log(saveUser1)
-    let saveUser2 = null
-        console.log(saveUser2)
+// $(".currentGamesContainer").find(".team-btn").on("click", async function () {
+//     let saveTeam1 = $(this).text()
+//         console.log(saveTeam1)
+//     let saveTeam2 = $(this).siblings(".team-btn").text()
+//         console.log(saveTeam2)
+//     let saveUser1 = $("#input-name").val()
+//         console.log(saveUser1)
+//     let saveUser2 = null
+//         console.log(saveUser2)
 
-    let saveBetCard = { user1: saveUser1, team1: saveTeam1, user2: saveUser2, team2: saveTeam2 }
-    $.post('/betcards', saveBetCard, function (response) {
-        console.log(saveBetCard)
-    })
-})
+//     let saveBetCard = { user1: saveUser1, team1: saveTeam1, user2: saveUser2, team2: saveTeam2 }
+//     await $.post('/betcards', saveBetCard)
+// })
 
 // --->> pending bets waiting
 // $(".openBetsMenu").find(".team-btn").on("click", function () {
@@ -56,7 +54,7 @@ $(".openBetsMenu").find(".team-btn").on("click", function () {
  
     let saveBetCard = { user1: saveUser1, team1: saveTeam1, user2: saveUser2, team2: saveTeam2 }
     DataManager.saveBetCard(saveBetCard)
-    DataManager.removeFrom
+   
 })
 
 // router.get('/teams', async function (req, res) {
