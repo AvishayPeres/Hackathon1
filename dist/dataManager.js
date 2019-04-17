@@ -1,5 +1,3 @@
-// commented out - exists in Master
-
 // let arrPendingBets = []
 // let arrTeams = []
 // let arrClosedBets = []
@@ -26,10 +24,18 @@ class DataManager {
         }
 
     async saveUser() {
-        await $.post(`/users`, this., function (user) {
-            console.log("s!")
+        await $.post(`/users:${userName}`, this.arrUsers, function (user) {
+            console.log("user saved")
             })
         }
+
+    async saveBetCard() {
+        await $.post(`/users:${userName}`, this.arrUsers, function (user) {
+            console.log("user saved")
+        })
+    }
+
+
 
 // provide param with name: 'betCardToSave'
 // save it to db.
