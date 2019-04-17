@@ -49,11 +49,17 @@ html {
 .team-score1-class{
     text-align: center;
     grid-area: team_score1;
+    color: rgb(235, 235, 236);
+    font-family: verdana;
+    text-shadow: 1px 1px black;
 
 }
 .team-score2-class{
     text-align: center;
     grid-area: team_score2;
+    color: rgb(235, 235, 236);
+    font-family: verdana;
+    text-shadow: 1px 1px black;
 }
 
 .scoresTable::before {
@@ -97,6 +103,9 @@ html {
     height:320px;
     width: 210px;
     overflow-y: scroll;
+    color: rgb(235, 235, 236);
+    font-family: verdana;
+    text-shadow: 1px 1px black;
 }
 
 .placeBet::before {
@@ -187,10 +196,16 @@ html {
 .teamChosen1{
     grid-area: ts1;
     text-align: center;
+    color: rgb(235, 235, 236);
+    font-family: verdana;
+    text-shadow: 1px 1px black;
 }
 .teamChosen2{
     grid-area: ts2;
     text-align: center;
+    color: rgb(235, 235, 236);
+    font-family: verdana;
+    text-shadow: 1px 1px black;
 }
 .user1{
     grid-area: user;
@@ -271,6 +286,9 @@ html {
     margin: 20px;
     height:320px;
     width: 350px;
+    color: rgb(235, 235, 236);
+    font-family: verdana;
+    text-shadow: 1px 1px black;
 }
 
 
