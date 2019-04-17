@@ -70,17 +70,17 @@ class helper {
         const curID = gameToDelete[0]._id
         console.log(`ID to delete: ${curID}`)
 
-        // const deletedGameMSG = await Game.findByIdAndDelete(curID, function (err) {
-        //     let message = ""
-        //     if (!err) {
-        //         message = `the game with ${curID} was deleted`;
-        //     }
-        //     else {
-        //         message = `error deleting game with id ${curID}`;
-        //     }
-        //     return message
-        // })
-        // return deletedGameMSG
+        const deletedGameMSG = await Game.findByIdAndDelete(curID, function (err) {
+            let message = ""
+            if (!err) {
+                message = `the game with ${curID} was deleted`;
+            }
+            else {
+                message = `error deleting game with id ${curID}`;
+            }
+            return message
+        })
+        return deletedGameMSG
     }
     async getGames() {
         let arr = await Game.find({})

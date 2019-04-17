@@ -69,10 +69,10 @@ const getPopulatedGames = async function () {
 const dummyArrOfTeams = [
     {team1: 'Chelsea', team2: 'Liverpool'},
     {team1: 'Watford', team2: 'Juventus'},
-    {team1: 'Man Utd', team2: 'Man City'},
-    {team1: 'Real Madrid', team2: 'Tottenham'},
+    {team1: 'Man_Utd', team2: 'Man_City'},
+    {team1: 'Real_Madrid', team2: 'Tottenham'},
     {team1: 'Inter', team2: 'Atalanta'},
-    {team1: 'Milan', team2: 'LA Galaxy'}
+    {team1: 'Milan', team2: 'LA_Galaxy'}
 ]
 
 router.get('/resetdb', function (req,res){
