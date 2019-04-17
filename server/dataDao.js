@@ -32,6 +32,18 @@ class helper {
         console.log(cardToSave)
         console.log(`card with id of ${cardToSave._id} was saved`)
     }
+
+    async saveOpenBetCards(argCard){
+        let openBetCardToSave = new OpenBetCard({
+            user1: argCard.user1,
+            team1: argCard.team1,
+            user2: argCard.user2,
+            team2: argCard.team2
+        })
+        openBetCardToSave.save()
+        console.log(cardToSave)
+        console.log(`openBetCardToSave with id of ${openBetCardToSave._id} was saved`)
+    }
     async getGames() {
         let arr = await Game.find({})
         return arr

@@ -89,4 +89,9 @@ router.get('/betcards', async function (req, res) {
     return arrBetCards
 })
 
+router.get('/openbetcards', async function (req, res) {
+    let openBetCardToSave = req.body
+    dataDao.saveOpenBetCards(openBetCardToSave)
+})
+
 module.exports = router

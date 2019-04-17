@@ -164,7 +164,7 @@
     margin: 20px;
     height:90%; 
 }
-
+/* 
 ::-webkit-scrollbar {
     width: 20px;
     }
@@ -180,4 +180,4 @@
     
     ::-webkit-scrollbar-thumb:hover {
     background:rgb(54, 56, 58);
-}
+} */
