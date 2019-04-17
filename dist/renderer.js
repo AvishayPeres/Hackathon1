@@ -20,6 +20,7 @@ const Renderer = function () {
             const saveTeam1 = $(this).text()
             const saveTeam2 = $(this).siblings(".team-btn").text()
             const saveUser1 = $(this).siblings(".user1").text()
+            
             const saveUser2 = $(".input-secondName").val()           
             const curCard = { user1: saveUser1, team1: saveTeam1, user2: saveUser2, team2: saveTeam2 }
 
@@ -80,30 +81,40 @@ const Renderer = function () {
 
         $(".currentGamesContainer").append(newHtml)
 
-        $(".currentGamesContainer").find(".team-btn").on("click", async function () {
-            const saveTeam1 = $(this).text()
-            const saveTeam2 = $(this).siblings(".team-btn").text()
-            const saveUser1 = $("#input-name").val()
-            const saveUser2 = null           
-            const tempOpenBetCard = { user1: saveUser1, team1: saveTeam1, user2: saveUser2, team2: saveTeam2 }
-
-            // ===============================================
-            //1. saving the card in db.
-            await $.post('/openbetcards', tempOpenBetCard)
-            //2. delete the game from array of games.
-            await $.ajax({
-                type: "DELETE",
-                url: '/game',
-                data: { team1: saveTeam1, team2: saveTeam2 },
-            });
-            //3. render again the games.
-            const arrGames = await $.get('/teams')
-            renderGames(arrGames)
-            //4. render open bets
-            const arrOpenBets = await $.get('/openbetcards')
-            renderOpenBets(arrOpenBets)
-            // ===============================================
+        $(".currentGamesContainer").find(".submit-bet").on("click", function(){
+            // const ch = $('input[name="team"]:checked').val()
+            
+            console.log(saveTeam1)
+            console.log(saveTeam2)
         })
+
+        // $(".currentGamesContainer").find(".team-btn").on("click", async function () {
+        //     const saveTeam1 = $(this).text()
+        //     const saveTeam2 = $(this).siblings(".team-btn").text()
+        //     const saveUser1 = $("#input-name").val()
+        //     const saveUser2 = null         
+            
+        //     const saveTeam1 = $('input[name="team"]:checked').val()
+        //     console.log(saveTeam1)
+        //     const tempOpenBetCard = { user1: saveUser1, team1: saveTeam1, user2: saveUser2, team2: saveTeam2 }
+
+        //     // ===============================================
+        //     //1. saving the card in db.
+        //     await $.post('/openbetcards', tempOpenBetCard)
+        //     //2. delete the game from array of games.
+        //     await $.ajax({
+        //         type: "DELETE",
+        //         url: '/game',
+        //         data: { team1: saveTeam1, team2: saveTeam2 },
+        //     });
+        //     //3. render again the games.
+        //     const arrGames = await $.get('/teams')
+        //     renderGames(arrGames)
+        //     //4. render open bets
+        //     const arrOpenBets = await $.get('/openbetcards')
+        //     renderOpenBets(arrOpenBets)
+        //     // ===============================================
+        // })
     }
 
     return {
