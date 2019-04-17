@@ -12,7 +12,9 @@ router.get('/sanity', function (req, res) {
 })
 
 
-const arrMainTeams = ["Chelsea", "Arsenal", "Liverpool", "Everton", "Fulham", "Watford"]
+
+// const arrMainTeams = ["Chelsea", "Arsenal", "Liverpool", "Everton", "Fulham", "Watford"]
+const arrMainTeams = ["Chelsea", "Arsenal", "Liverpool", "Everton"]
 // hardcoded array. 
 // we will get this thru apis.. 
 
@@ -73,12 +75,16 @@ const dummyArrOfTeams = [
     {team1: 'Milan', team2: 'LA Galaxy'}
 ]
 
-
+router.get('/resetdb', function (req,res){
+    dataDao.clearDB()
+    dataDao.populate(dummyArrOfTeams)
+})
 // ToDo: return real data.
 
 router.get('/teams', async function (req, res) {
     // const teams = await getPopulatedGames()
-    res.send(dummyArrOfTeams)
+    const arr = await dataDao.getGames()
+    res.send(arr)
 })
 
 router.post('/betcards', async function (req, res) {
@@ -106,8 +112,8 @@ router.get('/openbetcards', async function (req, res) {
 
 router.delete('/game', async function(req,res){
     let gameToDelete = req.body
-    // console.log(gameToDelete)
     const deletingMSG = await dataDao.deleteGame(gameToDelete)
     res.send(deletingMSG)
 })
+
 module.exports = router
