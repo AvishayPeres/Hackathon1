@@ -20,6 +20,30 @@ const arrOpenBets = [
         user2: null,
         team1: "Watford",
         team2: "Tottenham"
+    },
+    {
+        user1: "Vova",
+        user2: null,
+        team1: "Watford",
+        team2: "Tottenham"
+    },
+    {
+        user1: "Vova",
+        user2: null,
+        team1: "Watford",
+        team2: "Tottenham"
+    },
+    {
+        user1: "Vova",
+        user2: null,
+        team1: "Watford",
+        team2: "Tottenham"
+    },
+    {
+        user1: "Vova",
+        user2: null,
+        team1: "Watford",
+        team2: "Tottenham"
     }
 ]
 const arrUsers = [

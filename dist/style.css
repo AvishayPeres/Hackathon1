@@ -146,23 +146,28 @@
 }
 
 .openBetsMenu{
+    position: sticky;
     grid-area: m;
     background-color: var(--second-color);
     overflow-y: scroll;
-    height:90%;
+    height:320px;
+    width: 250px;
     border: 2px solid grey;
     border-radius: 10px;
     margin: 20px;
+    /* bottom: 0; */
 }
 
 .closedBetsMenu{
     grid-area: c;
+    position: sticky;
     background-color: var(--third-color);
     overflow-y: scroll;
     border: 2px solid grey;
     border-radius: 10px;
     margin: 20px;
-    height:90%; 
+    height:320px;
+    width: 250px;
 }
 /* 
 ::-webkit-scrollbar {
