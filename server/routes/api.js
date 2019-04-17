@@ -12,7 +12,7 @@ router.get('/sanity', function (req, res) {
 })
 
 
-const arrMainTeams = ["Chelsea", "Arsenal", "Liverpool", "Everton", "Fulham", "Watford"] 
+const arrMainTeams = ["Chelsea", "Arsenal", "Liverpool", "Everton", "Fulham", "Watford"]
 // hardcoded array. 
 // we will get this thru apis.. 
 
@@ -32,6 +32,18 @@ const populateWithApi = async function () {
             //     }
 
             // )
+
+            /*
+            for example with body parser...
+            router.post('/city', function(req,res) {
+                let cityName = req.body.cityName
+                const url = `http://api.apixu.com/v1/current.json?key=b2bd4bdcb0124f36bec75135191104&q=${cityName}`
+                request.get(url, (error, response, body) => {
+                    const arg = JSON.parse(body)   
+                    cityDao.saveCityToDB(arg)
+                });
+            })
+            */
         }
     }
     return await dataDao.getGames()
@@ -66,13 +78,13 @@ router.get('/teams', async function (req, res) {
 // }
 // save it to db. 
 // no answer!
-router.post('/betcards', async function(req,res){
+router.post('/betcards', async function (req, res) {
     let betCardToSave = req.body.betCardToSave
     dataDao.saveBetCard(betCardToSave)
 })
 
 // will return array of betcards.
-router.get('/betcards', async function(req, res){
+router.get('/betcards', async function (req, res) {
     const arrBetCards = await dataDao.getBetCards()
     return arrBetCards
 })
