@@ -28,11 +28,11 @@ const Renderer = function () {
             //1. saving the openCardIn as closed in db.
             await $.post('/closedBetCard', curCard)
             // //2. delete this from array of openBetCards.
-            // await $.ajax({
-            //     type: "DELETE",
-            //     url: '/game',
-            //     data: { team1: saveTeam1, team2: saveTeam2 },
-            // });
+            await $.ajax({
+                type: "DELETE",
+                url: '/openBetCard',
+                data: { team1: saveTeam1, team2: saveTeam2 },
+            });
 
             // //3. render again the openBetCards.
             const arrOpenBets = await $.get('/openbetcards')
@@ -118,15 +118,12 @@ const Renderer = function () {
             // ===============================================
         })
     }
-    const renderUsers = function (arrUsers) {
-        
-    }
+
     return {
         render: render,
         renderGames: renderGames,
         renderClosedBets: renderClosedBets,
         renderScoreTables: renderScoreTables,
-        renderOpenBets: renderOpenBets,
-        renderUsers: renderUsers
+        renderOpenBets: renderOpenBets
     }
 }

@@ -28,7 +28,54 @@ const retrieveUsersFromClosedBetCards = function (argArrClosedBetCards) {
     });
     return arrOnlyNames
 }
+// -----------------------------------------
+// Helping function.
+// calculating wins...
+// -----------------------------------------
+const calculateUsersWins = async function (argArrUsers, argArrClosedBetCards, argArrMatchResults) {
+    let arrUserWin = []
 
+    for (let i = 0; i < argArrUsers.length; i++) {
+        let curUser = {
+            user : argArrUsers[i],
+            wins : 0
+        }
+        for (let j = 0; j < argArrClosedBetCards.length; j++) {
+            let curBet = argArrClosedBetCards[j]
+            if ((curBet.user1 != curUser) || (curBet.user2 != curUser))
+                continue
+            else {
+                for (let k = 0; k < argArrMatchResults.length; k++) {
+                    let curMatchResult = argArrMatchResults[k]
+                    // check what team he betted on
+                    let curUsersTeam = curBet.team1 == curMatchResult.team1 ? curBet.team1 : curBet.team2
+
+                    if ((isUserWonMatch(curMatchResult, curUsersTeam)==1) || (isUserWonMatch(curMatchResult, curUsersTeam)==2))
+                        curUser.wins++
+                }
+            }
+        }
+        arrUserWin.push(curUser)
+    }
+    for ( let i = 0 ; i < arrUserWin.length ; i ++ ){
+        dataDao.saveUser(arrUserWin[i])
+    }
+    let result = await dataDao.getUsersWin()
+}
+const isUserWonMatch = function (argMatch, argTeam) {
+    // 1 - home team won
+    // 2 - away team won
+    // 3 - draw
+    let isHomeTeamWon = 1
+    if ((argMatch.team1_score > argMatch.team2_score ) && (argTeam == argMatch.team1))
+        isHomeTeamWon = 1
+    else if ((argMatch.team1_score < argMatch.team2_score) && (argTeam == argMatch.team2))
+        isHomeTeamWon = 2
+    else
+        isHomeTeamWon = 3
+
+    return isUserWonMatch
+}
 // const arrMainTeams = ["Chelsea", "Arsenal", "Liverpool", "Everton", "Fulham", "Watford"]
 const arrMainTeams = ["Chelsea", "Arsenal", "Liverpool", "Everton"]
 // hardcoded array. 
@@ -102,7 +149,11 @@ router.get('/teams', async function (req, res) {
     const arr = await dataDao.getGames()
     res.send(arr)
 })
-
+router.delete('/openBetCard', async function(req,res){
+    let betCardToDelete = req.body
+    const deletingMSG = await dataDao.deleteOpenBetCard(betCardToDelete)
+    res.send(deletingMSG)
+})
 router.post('/betcards', async function (req, res) {
     let betCardToSave = req.body
     dataDao.saveBetCard(betCardToSave)
@@ -138,7 +189,7 @@ router.post('/closedBetCard', async function (req, res) {
     dataDao.saveClosedBetCard(cardToClose)
     res.send()
 })
-router.get('/matchresults', async function (req,res){
+router.get('/matchresults', async function (req, res) {
     const arrResults = await dataDao.getMatchResults()
     res.send(arrResults)
 })
@@ -148,14 +199,16 @@ router.get('/closedBetCards', async function (req, res) {
     res.send(arrClosedBetCards)
 })
 
-router.get('/userwintable', async function(req,res){
-// we would do this if we had users in DB.
-    // but... we dont... so we have to create them from the closedBetCards. 
-    // const arrUsersToSend = await dataDao.getUsers()
-    const arrClosedBetCards = await dataDao.getClosedBets()
-    const arrUsersFromClosedBetCards = retrieveUsersFromClosedBetCards(arrClosedBetCards)
-    const arrMatchResults = await dataDao.getMatchResults()
-    const arrUsersWithAmoutOfWins = calculateUsersWins(arrUsersFromClosedBetCards, arrUsersFromClosedBetCards, arrMatchResults)
-    // res.send(arrUsersToSend)
+router.get('/userwintable', async function (req, res) {
+    let arrUsersWin = await dataDao.getUsersWin() //getting users. if empty - create them
+    if (arrUsersWin.length == 0) {
+        // but... we dont... so we have to create them from the closedBetCards. 
+        // const arrUsersToSend = await dataDao.getUsers()
+        const arrClosedBetCards = await dataDao.getClosedBets()
+        const arrUsersFromClosedBetCards = retrieveUsersFromClosedBetCards(arrClosedBetCards)
+        const arrMatchResults = await dataDao.getMatchResults()
+        arrUsersWin = calculateUsersWins(arrUsersFromClosedBetCards, arrClosedBetCards, arrMatchResults)
+    }
+    res.send(arrUsersWin)
 })
 module.exports = router
