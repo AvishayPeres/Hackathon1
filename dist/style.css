@@ -24,15 +24,16 @@
     border-radius: 10px;
     display:grid;
     grid-template-areas: "team_score1 score_separator team_score2";
+    
 }
 .scoreSeparator{
     grid-area: score_separator;
     text-align: center;
-
 }
 .team-score1-class{
     text-align: center;
     grid-area: team_score1;
+
 }
 .team-score2-class{
     text-align: center;
@@ -45,6 +46,10 @@
     display:grid;
     border: 2px solid grey;
     border-radius: 10px;
+    height:320px;
+    width: 210px;
+    overflow-y: scroll;
+
 }
 .winnerTable{
     grid-area: winner;
@@ -52,6 +57,10 @@
     margin: 20px;
     border: 2px solid grey;
     border-radius: 10px;
+    height:320px;
+    width: 210px;
+    overflow-y: scroll;
+
 }
 .placeBet{
     grid-area: p;
@@ -178,9 +187,7 @@
     width: 350px;
 }
 
-#comslider_in_point_1814208{
-    z-index: 0  ;
-}
+
 /* 
 ::-webkit-scrollbar {
     width: 20px;
