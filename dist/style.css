@@ -118,13 +118,26 @@
 .openSingleBet{
     display:grid;
     grid-template-areas: 
-    "user user user"
-    "team1 vs team2"
-    "input-secondName input-secondName input-secondName";
+    "ts1 ts1 ts1"
+    "ts2 ts2 ts2"
+    "input-secondName bsob bsob";
     margin: 5px;
     padding: 5px;
     border: 2px solid var(--third-color);
     border-radius: 10px;
+}
+.button-submit-openBet{
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px var(--fourth-color);
+    grid-area: bsob;
+}
+.teamChosen1{
+    grid-area: ts1;
+    text-align: center;
+}
+.teamChosen2{
+    grid-area: ts2;
+    text-align: center;
 }
 .user1{
     grid-area: user;

@@ -8,26 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css">
     <style>
-    body, html {
-        height: 100%;
-        margin: 0;
-      }
-      
-      .bg {
-        /* The image used */
-        background-image: url("barcelona.jpg");
-      
-        /* Full height */
-        height: 100%; 
-      
-        /* Center and scale the image nicely */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: sticky;
-        z-index: -1;
-      }
-      </style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .bg {
+            /* The image used */
+            background-image: url("barcelona.jpg");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: sticky;
+            z-index: -1;
+        }
+    </style>
 </head>
 
 <body>
@@ -80,29 +81,26 @@
                     <input type="radio" class="radio-button" name="team" value={{team1}} checked="checked"> {{team1}} 
                     <input type="radio" class="radio-button" name="team" value={{team2}}> {{team2}} 
                     <button class="submit-bet">Submit bet</button>
-                </div>
+            </div>
             {{/each}}
     </script>
     <!-- ----------------------------------------------- -->
     <script id="openBetsMenu-script" type="text/x-handlebars-template">
         {{#each arrOpenBets}}
         <div class="openSingleBet">
-                <div class="user1">{{user1}}</div>
-                <button class="team1 team-btn">{{team1}}</button>
-                <div class="vs">X</div>
-                <button class="team2 team-btn">{{team2}}</button>
+                <div class="teamChosen1"><span class="userSpan">{{user1}}</span> believes <span class="spanTeam1">{{team1}}</span> will win ! </div>
+                <div class="teamChosen2">Place bet on <span class="spanTeam2">{{team2}}</span> if you are brave :) </div>
                 <input type="text" class="input-secondName" placeholder="Input your name here...">
+                <button class="button-submit-openBet">Bet</button>
             </div>
         {{/each}}
     </script>
     <!-- ----------------------------------------------- -->
     <script id="closedBetsMenu-script" type="text/x-handlebars-template">
         {{#each arrClosedBets}}
-            <div class="openSingleBet">
-                <button class="team1 team-btn">{{team1}}</button>
-                <div class="vs">X</div>
-                <button class="team2 team-btn">{{team2}}</button>
-                <input type="text" class="input-secondName" placeholder="{{user1}}">
+            <div class="singleClosedBet">
+                <div>{{user1}} bets on {{team1}}</div> <br>
+                <div>{{user2}} bets on {{team2}}</div> 
             </div>
         {{/each}}
     </script>
