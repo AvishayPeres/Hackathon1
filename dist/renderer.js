@@ -110,7 +110,7 @@ const Renderer = function () {
                 data: { team1: saveTeam1, team2: saveTeam2 },
             });
             //3. render again the games.
-            const arrGames = await $.get('/teams')
+            const arrGames = await $.get('/games')
             renderGames(arrGames)
             //4. render open bets
             const arrOpenBets = await $.get('/openbetcards')
@@ -118,12 +118,19 @@ const Renderer = function () {
             // ===============================================
         })
     }
-
+    const renderUsers = function (arrUsers){
+        $(".winnerTable").empty();
+        const source = $("#render-winners-script").html()
+        const template = Handlebars.compile(source)
+        let newHtml = template({ arrUsers })
+        $(".winnerTable").append(newHtml)
+    }
     return {
         render: render,
         renderGames: renderGames,
         renderClosedBets: renderClosedBets,
         renderScoreTables: renderScoreTables,
-        renderOpenBets: renderOpenBets
+        renderOpenBets: renderOpenBets,
+        renderUsers:renderUsers
     }
 }

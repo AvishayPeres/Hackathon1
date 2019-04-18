@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const UserWinSchema = new Schema({
     user: String,
-    count: Number
+    wins: Number
 })
 
 const UserWin = mongoose.model("UserWin", UserWinSchema)
