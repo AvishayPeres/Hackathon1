@@ -14,6 +14,14 @@ html {
     background-size: cover;
   }
 
+  #comslider_in_point_1814208{
+      z-index: -999 !important;
+  }
+
+  #comslider_in_point_1814208 *{
+    z-index: -999 !important;
+}
+
 .header {
     color: white;
     font-family: verdana;
