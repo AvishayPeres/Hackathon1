@@ -135,7 +135,12 @@ html {
     padding: 5px;
     overflow-y: scroll;
 }
-
+.singleWinnerDiv{
+    border: 2px solid grey;
+    border-radius: 10px;
+    padding:10px;
+    margin: 5px
+}
 .input-div{
     grid-area: i;
     margin: 20px;

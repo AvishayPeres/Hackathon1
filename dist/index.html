@@ -20,6 +20,7 @@
     <button id="generateScores"> Generate Scores</button>
     <button id="render-users"> Render Users</button>
     <button id="render-closedBets">RenderClosedBets</button>
+    <button id="populate"> populate</button>
     <div class="container">
         <div class="placeBet">
             <div class="input-div">
@@ -90,6 +91,16 @@
                 <div class="team-score2-class">
                         {{team2_score}} {{team2}}
                 </div>
+        </div>
+        {{/each}}
+    </script>
+    <!-- ----------------------------------------------- -->
+    <script id="render-winners-script" type="text/x-handlebars-template">
+        {{#each arrUsers}}
+        <div class="singleWinnerDiv">
+                <div>
+                        {{user}} : {{wins}}
+                </div> 
         </div>
         {{/each}}
     </script>

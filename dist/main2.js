@@ -1,16 +1,6 @@
 
-// asd
-
-
-const arrUsers = [
-    {name: "user1", timesWon: "2"},
-    {name: "user2", timesWon: "5"},
-    {name: "user3", timesWon: "3"},
-    {name: "loser", timesWon: "0"}
-]
-
 $("#render-games").on("click", async function(){
-    const arrGames = await $.get('/teams')
+    const arrGames = await $.get('/games')
     renderer.renderGames(arrGames)
 })
 
@@ -21,10 +11,12 @@ $("#render-openBets").on("click", async function(){
 
 $("#render-users").on("click", async function(){
     const arrUsers = await $.get('/userwintable')
-     
     renderer.renderUsers(arrUsers)
 })
 
+$("#populate").on("click", async function(){
+    const arrGames = await $.get('/populate')
+})
 $("#generateScores").on("click", async function(){
     const arrMatchResults = await $.get('/matchresults')
     renderer.renderScoreTables(arrMatchResults)

@@ -3,7 +3,7 @@ const BetCard = require("./models/BetCard")
 const OpenBetCard = require("./models/OpenBetCard")
 const ClosedBetCard = require("./models/ClosedBetCard")
 const UserWin = require("./models/UserWin")
-
+const MatchResult = require("./models/MatchResult")
 class helper {
     constructor() {
     }
@@ -15,7 +15,8 @@ class helper {
     // in Version 1.1 it will generate according to the previous match. 
     // means it will send an api request to the server to get a privious match result, according to 2 teams.
     // ------------------------------------
-    async getMatchResults() {
+    async generateMatchResults() {
+        
         const arr = []
         const arrClosedBets = await this.getClosedBets()
         arrClosedBets.forEach(element => {
@@ -30,11 +31,25 @@ class helper {
             }
 
             arr.push(curScore)
+
         });
 
-        return arr;
-    }
+        for( let i = 0 ; i < arr.length ; i ++ )
+            await this.saveMatchResult(arr[i])
 
+        const arr2 = await this.getMatchResults()
+        return arr2
+    }
+    async saveMatchResult(argMatchResult){
+        let matchResult = new MatchResult({
+            team1: argMatchResult.team1,
+            team2: argMatchResult.team2,
+            team1_score: argMatchResult.team1_score,
+            team2_score: argMatchResult.team2_score
+        })
+        matchResult.save()
+        console.log(`MatchResult with id of ${matchResult._id} was saved`)
+    }
     async clearDB() {
         // Game.collection.drop()
         // OpenBetCard.collection.drop()
@@ -68,9 +83,10 @@ class helper {
         console.log(`card with id of ${cardToSave._id} was saved`)
     }
     async saveUser(argUser){
+        console.log(`in dataDao, saveUser: got win: ${argUser.win}, user: ${argUser.user}`)
         let userWin = new UserWin({
             user: argUser.user,
-            win : argUser.win
+            wins : argUser.wins
         })
         userWin.save()
         console.log(`user with id of ${userWin._id} was saved`)
@@ -87,6 +103,14 @@ class helper {
         console.log(`openBetCardToSave with id of ${openBetCardToSave._id} was saved`)
     }
 
+    async saveGameToDB(argGame){
+        let game = new Game({
+            team1: argGame.team1,
+            team2: argGame.team2
+        })
+        game.save()
+        console.log(`game with ${game.team1} vs ${game.team2} was saved.`)
+    }
     async saveClosedBetCard(argCard) {
         let closedBetCard = new ClosedBetCard({
             user1: argCard.user1,
@@ -151,6 +175,10 @@ class helper {
 
     async getUsersWin() {
         let arr = await UserWin.find({})
+        return arr
+    }
+    async getMatchResults(){
+        let arr = await MatchResult.find({})
         return arr
     }
 }
